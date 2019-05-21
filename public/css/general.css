@@ -1,0 +1,15 @@
+.pdp-div{
+  background-repeat: no-repeat;
+  background-size:cover;
+  height:70px;
+  width:70px;
+  border-radius:50%;
+}
+.ui-inp{
+  display:block;
+  margin-bottom:10px;
+}
+
+.ui-span{
+  text-align: left;
+}

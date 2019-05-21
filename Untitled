@@ -1,0 +1,10 @@
+
+;initialisation des variables
+MOV cx, 0
+MOV bx, 1200h
+
+boucle:
+INC CX
+INC BX
+CMP [BX], '$'
+JNE boucle
