@@ -82,7 +82,9 @@ class dashboard extends Controller
     // Route to add module
     public function addmodule(){
       $branches = branch::all();
+      $professors = User::all()->where('rank','=','professor');
       $data=[
+        'list_professors' => $professors,
         'list_branches' => $branches
       ];
       return view('admin.addmodule')->with($data);
@@ -109,7 +111,9 @@ class dashboard extends Controller
     // Route to add subject
     public function addsubject(){
       $modules = module::all();
+      $professors = User::all()->where('rank','=','professor');
       $data=[
+        'list_professors' => $professors,
         'list_modules' => $modules,
       ];
       return view('admin.addsubject')->with($data);
@@ -127,6 +131,7 @@ class dashboard extends Controller
     public function createmodule(Request $request){
       $module = new module;
       $module->title = $request->title;
+      $module->professor_id = $request->professor_id;
       $module->branch_id = $request->branch_id;
       $module->save();
       return redirect()->back();
@@ -135,6 +140,7 @@ class dashboard extends Controller
     // Create Subject Function
     public function createsubject(Request $request){
       $subject = new subject;
+      $subject->professor_id = $request->professor_id;
       $subject->title = $request->title;
       $subject->module_id = $request->module_id;
       $subject->save();
@@ -203,5 +209,12 @@ class dashboard extends Controller
        return redirect()->back();
      }
 
+     // Update user
+     public function updateuser(Request $request){
+       $user = User::all()->where('id','=',$request->id)->first();
+       $user->rank = $request->rank;
+       $user->save();
+       return redirect()->back();
+     }
 
 }

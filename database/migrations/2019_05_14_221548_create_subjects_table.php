@@ -18,6 +18,8 @@ class CreateSubjectsTable extends Migration
             $table->string('title');
             $table->unsignedInteger('module_id');
             $table->foreign('module_id')->references('id')->on('modules')->onDelete('cascade');
+            $table->unsignedInteger('professor_id');
+            $table->foreign('professor_id')->references('id')->on('users')->onDelete('cascade');
             $table->timestamps();
         });
     }

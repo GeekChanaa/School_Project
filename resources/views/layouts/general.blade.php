@@ -18,7 +18,7 @@
 <body>
         <nav class="navbar navbar-dark bg-dark">
           @auth
-          <div class="navbar-brand pdp-div" style="background-image: url('{{ asset('users_pdp/'.Auth::user()->phone.'.jpeg') }}');">
+          <div class="navbar-brand pdp-div" style="background-image: url('{{ asset('storage/users_pdp/'.Auth::user()->phone.'.jpeg') }}');">
             @endif
 
           </div>

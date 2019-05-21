@@ -45,13 +45,15 @@ Route::group(['middleware' => 'admin'],function(){
   Route::delete('/deleteroom','dashboard@deleteroom');
   Route::delete('/deletemodule','dashboard@deletemodule');
   Route::delete('/deletesubject','dashboard@deletesubject');
+  // Routes to update forms
+  Route::post('/admin/modifyuser','dashboard@updateuser');
 });
 
-// User Interface Routes:
+/***** User Interface Routes *****/
 
 // Route to user interface
 Route::get('/userinterface','HomeController@UserInterface');
-Route::post('/modifyuser','userController@modifyuser');
+
 // Change profile image
 
 // token to become a student
@@ -61,3 +63,13 @@ Route::post('/modifyuser','userController@modifyuser');
 // Delete Account
 
 // change personal data
+Route::post('/modifyuser','userController@modifyuser');
+/** Professor Interface Routes **/
+Route::get('/professorinterface','ProfessorController@interface');
+// Notes d'une matiere d'un prof
+Route::get('/pi/notes/{subject_id}','ProfessorController@notes');
+// Ajouter une note
+Route::post('/createnote','NotesController@create');
+
+// change personal data of professor :
+Route::post('/modifyProfessor','ProfessorController@modifyProfessor');

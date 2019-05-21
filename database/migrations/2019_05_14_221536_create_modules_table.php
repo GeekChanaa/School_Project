@@ -18,6 +18,8 @@ class CreateModulesTable extends Migration
             $table->string('title');
             $table->unsignedInteger('branch_id');
             $table->foreign('branch_id')->references('id')->on('branches')->onDelete('cascade');
+            $table->unsignedInteger('professor_id');
+            $table->foreign('professor_id')->references('id')->on('users')->onDelete('cascade');
             $table->timestamps();
         });
     }
